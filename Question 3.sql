@@ -20,5 +20,5 @@ Insert into Category (NameCategory, IdProduct)
 values ('Fruits', 1), ('Toys', 2), ('Gadgets', 3), (null, 4)
 
 -- Запрос для выбора всех пар «Имя продукта – Имя категории»
-select NameProduct as 'Имя продукта', NameCategory as 'Имя категории' from Product p
+select NameProduct as 'Name product', NameCategory as 'Name category' from Product p
 inner join Category c on p.Id = c.IdProduct
