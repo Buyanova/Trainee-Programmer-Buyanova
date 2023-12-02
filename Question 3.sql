@@ -1,27 +1,24 @@
-Use [Продукты]
+Use [Products]
 
-Create table Продукт
+Create table Product
 (
 Id int Primary key Identity(1,1),
-Имя_продукта nvarchar(100) not null
+NameProduct nvarchar(100) not null
 )
-Insert into Продукт (Имя_продукта)
-values ('Яблоко'), ('Кукла'), ('Телефон'), ('Швабра')
+Insert into Product (NameProduct)
+values ('Apple'), ('Doll'), ('Phone'), ('Mop')
 
-select * from Продукт
-
-Create table Категория
+Create table Category
 (
 Id int Primary key Identity(1,1),
 IdProduct int not null,
-Имя_категории nvarchar(100)
-Foreign key (IdProduct) references Продукт(Id) on update cascade on delete cascade
+NameCategory nvarchar(100)
+Foreign key (IdProduct) references Product(Id) on update cascade on delete cascade
 )
 
-Insert into Категория (Имя_категории, IdProduct)
-values ('Фрукты', 1), ('Игрушки', 2), ('Гаджеты', 3), (null, 4)
+Insert into Category (NameCategory, IdProduct)
+values ('Fruits', 1), ('Toys', 2), ('Gadgets', 3), (null, 4)
 
-select * from Категория
-
-select Имя_продукта, Имя_категории from Продукт p
-inner join Категория k on p.Id = k.IdProduct
+-- Запрос для выбора всех пар «Имя продукта – Имя категории»
+select NameProduct as 'Имя продукта', NameCategory as 'Имя категории' from Product p
+inner join Category c on p.Id = c.IdProduct
